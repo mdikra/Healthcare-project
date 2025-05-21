@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Healthcare-project
+  name: healthcare-project  # Changed to lowercase
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Healthcare-project
+      app: healthcare-project  # Changed to lowercase
   template:
     metadata:
       labels:
-        app: Healthcare-project
+        app: healthcare-project  # Changed to lowercase
     spec:
       containers:
-        - name: healthcare-projeect
+        - name: healthcare-project  # Fixed typo in name ("projeect" → "project")
           image: danishdockerhub/staragile-project-healthcare:v1
           ports:
             - containerPort: 8081
@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: Healthcare-project
+  name: healthcare-project  # Changed to lowercase
 spec:
   type: NodePort
   ports:
     - port: 8081
       targetPort: 8081
   selector:
-    app: Healthcare-project
+    app: healthcare-project  # Changed to lowercase
