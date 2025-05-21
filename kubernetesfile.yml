@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Healthcare-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Healthcare-project
+  template:
+    metadata:
+      labels:
+        app: Healthcare-project
+    spec:
+      containers:
+        - name: healthcare-projeect
+          image: danishdockerhub/staragile-project-health:v1
+          ports:
+            - containerPort: 8081
+          env:
+            - name: PORT
+              value: "8081"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: Healthcare-project
+spec:
+  type: NodePort
+  ports:
+    - port: 8081
+      targetPort: 8081
+  selector:
+    app: Healthcare-project
